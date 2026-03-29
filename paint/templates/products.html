@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fix It Fix</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #0b1f2a;
+    color: white;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+    background: #0f2c3a;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.menu {
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+}
+
+/* Mobile Nav */
+.nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100%;
+    background: #0f2c3a;
+    padding: 60px 20px;
+    transition: 0.3s;
+}
+
+.nav.active {
+    right: 0;
+}
+
+.nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 55%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1581091870627-3d1e7c1bdbb0?auto=format&fit=crop&w=800&q=80') no-repeat center/cover;
+    filter: brightness(55%);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: #0b1f2a;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    padding: 60px 25px;
+    max-width: 600px;
+}
+
+.title {
+    font-size: 52px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background: #d9a441;
+    color: black;
+    padding: 12px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* Sections */
+.section {
+    padding: 80px 20px;
+}
+
+.section h2 {
+    margin-bottom: 20px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    .menu {
+        display: block;
+    }
+    .hero::before {
+        width: 100%;
+    }
+    .hero::after {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <a class="logo" href="{% url 'home' %}"><div class="logo">FIX IT FIX</div></a>
+
+
+    <div class="nav-links">
+      <a href="{% url 'products' %}">Products</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'contact' %}">Contact</a>
+    </div>
+
+    <div class="menu" onclick="toggleMenu()">☰</div>
+</div>
+
+<div class="nav" id="navMenu">
+  <a href="{% url 'products' %}">Products</a>
+  <a href="{% url 'about' %}">About</a>
+  <a href="{% url 'contact' %}">Contact</a>
+</div>
+
+<div class="hero">
+    <div class="content">
+        <div class="title">PAINTS, COATINGS</div>
+        <div class="description">
+          <ul class="list-inline text-center">
+            <li>Architectural</li>
+            <li>Roof & Waterproofing</li>
+            <li>Road Marking</li>
+            <li>Industrial Sealants</li>
+          </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>

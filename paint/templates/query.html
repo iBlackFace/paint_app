@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fix It Fix Contact</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(180deg, #0f2a3f, #091d2c);
+        color: #fff;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        font-weight: bold;
+        font-size: 20px;
+        background: rgba(0,0,0,0.2);
+    }
+
+    .menu {
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .container {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 10px;
+        background: rgba(255,255,255,0.02);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #bbb;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background: #0c2335;
+        color: #fff;
+        outline: none;
+    }
+
+    textarea {
+        resize: none;
+        height: 100px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        background: #f5a623;
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #ffb84d;
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 14px;
+        color: #aaa;
+    }
+
+    /* Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 18px;
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+    }
+
+    .modal-content {
+        background: #0f2a3f;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .modal button {
+        margin-top: 15px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+      <a class="logo" href="{% url 'home' %}"><div class="logo">FIX IT FIX</div></a>
+    <div class="menu">☰</div>
+</header>
+
+<div class="container">
+    <form id="contactForm">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" required>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" required>
+        </div>
+
+        <div class="form-group">
+            <label>Message</label>
+            <textarea required></textarea>
+        </div>
+
+        <button type="submit" href="{% url 'home' %}">Request</button>
+    </form>
+</div>
+
+<footer>
+    © 2026 Fix It Fix Production (Pty) Ltd. All rights reserved.
+</footer>
+
+<!-- Modal -->
+<div class="modal" id="thankYouModal">
+    <div class="modal-content">
+        <h2>Thank You!</h2>
+        <p>Your request has been processed.</p>
+        <button onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('contactForm');
+    const modal = document.getElementById('thankYouModal');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // stop actual submit
+        modal.style.display = 'flex';
+        form.reset();
+    });
+
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

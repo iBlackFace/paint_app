@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fix It Fix</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(180deg, #0b1f33, #071625);
+        color: #fff;
+    }
+
+    /* Header */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        font-weight: bold;
+        font-size: 22px;
+        background: rgba(255,255,255,0.03);
+    }
+
+    .menu {
+        font-size: 26px;
+        cursor: pointer;
+    }
+
+    /* Card */
+    .card {
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 6px;
+        background: rgba(255,255,255,0.02);
+    }
+
+    .item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 25px;
+    }
+
+    .icon {
+        font-size: 20px;
+        color: #d4a64c;
+        margin-right: 15px;
+        width: 25px;
+    }
+
+    .label {
+        font-size: 14px;
+        color: #b0b8c1;
+    }
+
+    .value {
+        font-size: 18px;
+        margin-top: 4px;
+    }
+
+    /* Footer */
+    .footer {
+        margin: 40px 20px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 20px;
+        color: #a0a7b0;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .footer-links {
+        margin-top: 15px;
+    }
+
+    .footer-links a {
+        color: #a0a7b0;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+
+    .footer-links a:hover {
+        text-decoration: underline;
+    }
+
+    {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: #0b1f2a;
+        color: white;
+    }
+
+    /* Header */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 20px;
+        background: #0f2c3a;
+    }
+
+    .logo {
+        font-size: 18px;
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+    }
+    .nav-links {
+        display: flex;
+        gap: 20px;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .menu {
+        font-size: 24px;
+        cursor: pointer;
+        display: none;
+    }
+
+    /* Mobile Nav */
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100%;
+        background: #0f2c3a;
+        padding: 60px 20px;
+        transition: 0.3s;
+    }
+
+    .nav.active {
+        right: 0;
+    }
+
+    .nav a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        margin-bottom: 20px;
+    }
+
+    #mainImg {
+        width: 100%;
+
+        height: auto;
+        display: block;
+        margin: 0 auto; /* centers image */
+    }
+
+    /* Hero */
+    .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 55%;
+        height: 100%;
+        background: url('https://images.unsplash.com/photo-1581091870627-3d1e7c1bdbb0?auto=format&fit=crop&w=800&q=80') no-repeat center/cover;
+        filter: brightness(55%);
+    }
+
+    .hero::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: #0b1f2a;
+    }
+
+    .content {
+        position: relative;
+        z-index: 2;
+        padding: 60px 25px;
+        max-width: 600px;
+    }
+
+    .title {
+        font-size: 52px;
+        font-weight: 800;
+        margin-bottom: 20px;
+    }
+
+    .description {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    .btn-primary {
+        background: #d9a441;
+        color: black;
+        padding: 12px 20px;
+        text-decoration: none;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+    /* Sections */
+    .section {
+        padding: 80px 20px;
+    }
+
+    .section h2 {
+        margin-bottom: 20px;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+        .menu {
+            display: block;
+        }
+        .hero::before {
+            width: 100%;
+        }
+        .hero::after {
+            display: none;
+        }
+    }
+
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="header">
+  <a class="logo" href="{% url 'home' %}"><div class="logo">FIX IT FIX</div></a>
+    <div class="menu">&#9776;</div>
+    <div class="nav-links">
+        <a href="{% url 'products' %}">Products</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'contact' %}">Contact</a>
+    </div>
+</div>
+
+<!-- Contact Card -->
+<div class="card">
+
+    <div class="item">
+        <div class="icon">✉</div>
+        <div>
+            <div class="label">Sales</div>
+            <div class="value">sales@fixitfix.co.za</div>
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="icon">✉</div>
+        <div>
+            <div class="label">Support</div>
+            <div class="value">support@fixitfix.co.za</div>
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="icon">📞</div>
+        <div>
+            <div class="label">Phone</div>
+            <div class="value">+27 (0)12 345 6789</div>
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="icon">🕒</div>
+        <div>
+            <div class="label">Hours</div>
+            <div class="value">Mon–Fri 08:00–17:00 SAST</div>
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="icon">📍</div>
+        <div>
+            <div class="label">Location</div>
+            <div class="value">Industrial Zone, Gauteng<br>South Africa</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    © 2026 Fix It Fix Production (Pty) Ltd. All rights reserved.
+
+    <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+    </div>
+</div>
+
+</body>
+</html>
